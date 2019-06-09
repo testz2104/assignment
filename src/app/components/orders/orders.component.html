@@ -1,0 +1,42 @@
+<div *ngIf="orders.length > 0">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Thumbnail</th>
+        <th scope="col">Title</th>
+        <th scope="col">Url</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders| slice:0:10">
+        <td>{{ order.id }}</td>
+        <td><a href="javascript:void(0)" (click)="openModal(order)"><img src="{{ order.thumbnailUrl }}" alt="{{ order.title }}" title="{{ order.title }}" /></a></td>
+        <td>{{ order.title }}</td>
+        <td>{{ order.url }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="closeModal()">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p><img src="{{ imageUrl }}" width="400" height="400" alt="NO SUCH IMAGE" title="{{ photoTitle }}" /></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" (click)="closeModal()">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div id="overlay"></div>
